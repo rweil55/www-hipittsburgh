@@ -1,0 +1,15 @@
+# Hide draft new page and *.htm files
+User-Agent: *
+Disallow: /_admin/*
+Disallow: /_obsolete/*
+Disallow: /_private/*
+Disallow: /_vti_bin/*
+Disallow: /_vti_cnf/*
+Disallow: /_vti_txt/*
+Disallow: /cgi-bin/*
+Disallow: /hostel_photos/*
+Disallow: /images/*
+Disallow: /newsletter/*
+Disallow: /ph_thumb/*
+Disallow: /registration/*
+Disallow: /saftey/*

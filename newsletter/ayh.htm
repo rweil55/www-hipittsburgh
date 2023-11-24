@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body background="duststorm.jpg" bgcolor="#33CC99"  onLoad="document.forms.MyForm.firstname.focus()">
+<form NAME="MyForm" method="post" action="FormMail.pl">
+  <input type="hidden" name="subject" value="AYH Contact Information" />
+  <input name="return_link_url" value="/index.htm" type="hidden">
+  <input type="hidden" name="return_link_title" value="Back to my home page" />
+  <input type="hidden" name="redirect" value="/newsletter/ayhok.htm" />
+
+<head>
+<SCRIPT TYPE="text/javascript">
+
+function noenter(e) {
+  return !(window.event && window.event.keyCode == 13); }
+
+function fivechar(myfield) {
+var b=myfield.value.length;
+if (b==5 || b==0)
+  return true;
+else
+alert("Oops!  MUST have 5 digits.  Please try again.");
+ myfield.select();
+ myfield.focus();
+return false; }
+
+function fourchar(myfield) {
+var b=myfield.value ;
+var n=b.length ;
+  if (n>0) {
+   if (n!=4 || b<"1949" || b>"2004" ) {
+    alert("Year Left MUST be Between 1949 and 2004!");
+ myfield.select();
+ myfield.focus();
+return false; } }
+  return true; }
+
+function life(myfield) {
+var b=myfield.value ;
+var n=b.length ;
+  if (n>0 && b!="LIFE") {
+   if (n!=4 || b<"1949" || b>"2004" ) {
+    alert("Year Left MUST be LIFE or Between 1949 and 2004!");
+ myfield.select();
+ myfield.focus();
+return false; } }
+  return true; }
+
+// copyright 1999 Idocs, Inc. http://www.idocs.com
+// Distribute this script freely but keep this notice in place
+function numbersonly(myfield, e, dec)
+{
+var key;
+var keychar;
+
+if (window.event)
+   key = window.event.keyCode;
+else if (e)
+   key = e.which;
+else
+   return true;
+keychar = String.fromCharCode(key);
+
+// control keys
+// if key==13 return false;
+if ((key==null) || (key==0) || (key==8) ||
+    (key==9) || (key==13) || (key==27) )
+   return true;
+
+// numbers
+else if ((("0123456789").indexOf(keychar) > -1))
+   return true;
+
+// decimal point jump
+else if (dec && ((keychar == ".") || (keychar == "+") || (keychar == "(") || (keychar == ")" || (keychar == "-"))))
+   {
+   myfield.form.elements[dec].focus();
+   return false;
+   }
+else
+   return false;
+}
+
+function submitform() {
+if (!document.forms.MyForm.AGREE[0].checked) {
+  alert("Can NOT submit information unless you agree with conditions!");
+    return false; }
+var b=document.forms.MyForm.firstname.value ;
+var n=0;
+var i=0;
+for (i=0;i<=b.length-1;i++)
+{
+  if (b.substring(i,i+1)!=" ") n=1;
+}
+  if (n==0) {
+    alert("MUST have First Name!");
+    document.forms.MyForm.firstname.select();
+    document.forms.MyForm.firstname.focus();
+    return false; }
+b=document.forms.MyForm.lastname.value ;
+n=0;
+for (i=0;i<=b.length-1;i++)
+{
+  if (b.substring(i,i+1)!=" ") n=1;
+}
+  if (n==0) {
+   alert("MUST have Last Name!");
+    document.forms.MyForm.lastname.select();
+    document.forms.MyForm.lastname.focus();
+    return false; }
+b=document.forms.MyForm.zipcode.value ;
+n=b.length ;
+  if (n>0 && n<5) {
+   alert("Zipcode MUST have 5 digits!");
+    document.forms.MyForm.zipcode.select();
+    document.forms.MyForm.zipcode.focus();
+    return false; }
+n=document.forms.MyForm.street.value.length ;
+  if (n==0) {
+    alert("MUST have Street!");
+    document.forms.MyForm.street.select();
+    document.forms.MyForm.street.focus();
+    return false; }
+n=document.forms.MyForm.city.value.length ;
+  if (n==0) {
+    alert("MUST have City!");
+    document.forms.MyForm.city.select();
+    document.forms.MyForm.city.focus();
+    return false; }
+b=document.forms.MyForm.country.value;
+if (b == 'USA') {
+ b=document.forms.MyForm.state.value;
+ n=b.length ;
+  if (n==0) {
+    alert("MUST have State!");
+    document.forms.MyForm.state.select();
+    document.forms.MyForm.state.focus();
+    return false; }
+ n=document.forms.MyForm.zipcode.value.length ;
+  if (n==0) {
+    alert("MUST have zipcode!");
+    document.forms.MyForm.zipcode.select();
+    document.forms.MyForm.zipcode.focus();
+    return false; }
+}
+b=document.forms.MyForm.yrjoin.value ;
+n=b.length ;
+  if (n>0 && (b<"1949" || b>"2004" )) {
+    alert("Year Join MUST be Between 1949 and 2004!");
+    document.forms.MyForm.yrjoin.select();
+    document.forms.MyForm.yrjoin.focus();
+    return false; }
+b=document.forms.MyForm.yrleft.value ;
+n=b.length ;
+  if (n>0 && b!="LIFE") {
+   if (b<"1949" || b>"2004" ) {
+    alert("Year Left MUST be LIFE or Between 1949 and 2004!");
+    document.forms.MyForm.yrleft.select();
+    document.forms.MyForm.yrleft.focus();
+    return false; }  }
+b=document.forms.MyForm.emailaddr.value ;
+var a=0;
+n=0;
+for (i=0;i<=b.length-1;i++)
+ {
+  if (b.substring(i,i+1)=="@") n=i;
+  if (b.substring(i,i+1)==".") a=i;
+ }
+ if (b.length==0) {
+   var agree=confirm("No Email Address given. IF you continue, I will NOT be able to send updates. Are you sure you wish to continue?");
+  if (!agree){
+    document.forms.MyForm.emailaddr.setfocus();
+  return false;}
+  else if (document.forms.MyForm.homephone.value.length==0 && document.forms.MyForm.businessphone.value.length==0) {
+  alert("MUST have an email address OR a phone number!");
+  return false;}
+ }
+ else
+  if (n==0 || a==0 || n>=a) {
+    alert("MUST have Correctly Formatted Email Address!");
+    document.forms.MyForm.emailaddr.select();
+    document.forms.MyForm.emailaddr.focus();
+    return false; }
+    var agree=confirm("Check Entries. Are you sure you wish to continue?");
+  if (agree)
+    document.forms.MyForm.submit();
+  return false;
+}
+
+</SCRIPT>
+ <title>AYH Contact Information</title>
+ <link rel="stylesheet" type="text/css" href="/css/nms.css" />
+</head>
+<table>
+   <tr>Contact Information:  &nbsp;&nbsp;&nbsp;* Fields MUST be Entered! &nbsp;&nbsp;&nbsp;# Fields MUST be Entered for USA!</tr>
+   <tr>
+    <td>First Name*</td>
+    <td><input type="text" name="firstname" size="35" maxlength="30" onkeypress="return noenter(event)"></td>
+    <td>Last Name*</td>
+    <td><input type="text" name="lastname" size="35" maxlength="30" onkeypress="return noenter(event)"></td>
+   </tr>
+   <tr>
+    <td>Street*</td>
+    <td><input type="text" name="street" size="40" maxlength="50" onkeypress="return noenter(event)"></td>
+   </tr>
+</table>
+<table>
+   <tr>
+    <td>City*</td>
+    <td><input type="text" name="city" size="40" maxlength="40" onkeypress="return noenter(event)"></td>
+    <td>State#</td>
+<td>
+<select name="state" id="cons_state" size="1" onkeypress="return noenter(event)"
+>
+<option selected="selected"  ></option>
+<option   value="AK">AK</option>
+<option   value="AL">AL</option>
+<option   value="AR">AR</option>
+<option   value="AZ">AZ</option>
+<option   value="CA">CA</option>
+<option   value="CO">CO</option>
+<option   value="CT">CT</option>
+
+<option   value="DC">DC</option>
+<option   value="DE">DE</option>
+<option   value="FL">FL</option>
+<option   value="GA">GA</option>
+<option   value="HI">HI</option>
+<option   value="IA">IA</option>
+<option   value="ID">ID</option>
+<option   value="IL">IL</option>
+<option   value="IN">IN</option>
+
+<option   value="KS">KS</option>
+<option   value="KY">KY</option>
+<option   value="LA">LA</option>
+<option   value="MA">MA</option>
+<option   value="MD">MD</option>
+<option   value="ME">ME</option>
+<option   value="MI">MI</option>
+<option   value="MN">MN</option>
+<option   value="MO">MO</option>
+
+<option   value="MS">MS</option>
+<option   value="MT">MT</option>
+<option   value="NC">NC</option>
+<option   value="ND">ND</option>
+<option   value="NE">NE</option>
+<option   value="NH">NH</option>
+<option   value="NJ">NJ</option>
+<option   value="NM">NM</option>
+<option   value="NV">NV</option>
+
+<option   value="NY">NY</option>
+<option   value="OH">OH</option>
+<option   value="OK">OK</option>
+<option   value="OR">OR</option>
+<option   value="PA">PA</option>
+<option   value="RI">RI</option>
+<option   value="SC">SC</option>
+<option   value="SD">SD</option>
+<option   value="TN">TN</option>
+
+<option   value="TX">TX</option>
+<option   value="UT">UT</option>
+<option   value="VA">VA</option>
+<option   value="VT">VT</option>
+<option   value="WA">WA</option>
+<option   value="WI">WI</option>
+<option   value="WV">WV</option>
+<option   value="WY">WY</option>
+<option   value="AS">AS</option>
+
+<option   value="FM">FM</option>
+<option   value="GU">GU</option>
+<option   value="MH">MH</option>
+<option   value="MP">MP</option>
+<option   value="PR">PR</option>
+<option   value="PW">PW</option>
+<option   value="VI">VI</option>
+<option   value="AA">AA</option>
+<option   value="AE">AE</option>
+
+<option   value="AP">AP</option>
+<option   value="AB">AB</option>
+<option   value="BC">BC</option>
+<option   value="MB">MB</option>
+<option   value="NB">NB</option>
+<option   value="NF">NF</option>
+<option   value="NS">NS</option>
+<option   value="NT">NT</option>
+<option   value="NU">NU</option>
+
+<option   value="ON">ON</option>
+<option   value="PE">PE</option>
+<option   value="QC">QC</option>
+<option   value="SK">SK</option>
+<option   value="YT">YT</option>
+<!-- <option   value="None">None</option> -->
+</select>
+</td>
+    <td>Zip Code#</td>
+    <td><input type="text" name="zipcode" size="5" maxlength="5" onblur="return fivechar(this)" onKeyPress="return numbersonly(this, event)" ></td>
+</tr>
+</table>
+<table>
+<tr>
+    <td>Country*</td>
+    <td><input type="text" name="country" size="35" maxlength="30" Value="USA" onkeypress="return noenter(event)"></td>
+   </tr>
+</table>
+<table>
+   <tr>
+    <td>Home Phone</td>
+    <td><input type="text" name="homephone" size="25" maxlength="20"  onKeyPress="return numbersonly(this, event, true)"></td>
+    <td>Business Phone</td>
+    <td><input type="text" name="businessphone" size="25" maxlength="20" onKeyPress="return numbersonly(this, event, true)"></td>
+   </tr>
+</table>
+<table>
+   <tr>
+    <td>Email*</td>
+    <td><input type="text" name="emailaddr" size="40" maxlength="50" onkeypress="return noenter(event)"> MUST have phone# if NO email address</td>
+   </tr>
+</table>
+<table>
+   <tr>
+    <td>Year Joined</td>
+    <td><input type="text" name="yrjoin" id="cons_YRJOIN" size="4" maxlength="4"  onblur="return fourchar(this)" onKeyPress="return numbersonly(this, event)" ></td>
+    <td>Year Left or LIFE</td>
+    <td><input type="text" name="yrleft" id="cons_YRleft" size="4" maxlength="4" onblur="return life(this)" ></td>
+  </tr>
+  </table>
+<TABLE width="500">
+<TR>
+<TD>
+<font face="Arial" size="2">
+<INPUT TYPE="RADIO" NAME="BUTTON" VALUE="New Member" checked onkeypress="return noenter(event)">  New Member</font> 
+</TD>
+<TD>
+<font face="Arial" size="2">
+<INPUT TYPE="RADIO" NAME="BUTTON" VALUE="Update Member" onkeypress="return noenter(event)">  Update Member</font>
+</TD>
+<TD>
+<font face="Arial" size="2">
+<INPUT TYPE="RADIO" NAME="BUTTON" VALUE="Send Member List" onkeypress="return noenter(event)">  Send Member List (MUST be a member)</font>
+</TD>
+</TR>
+</table>
+<table>
+    <td>Comments</td>
+    <td><textarea name="comments" rows="5" cols="60" maxlength="255" onblur="return noenter(event)" ></textarea></td>
+</table>
+<table border="1">
+<tr><td>This service is designed to get members in-touch with each other, especially those that have moved away from Pittsburgh.
+<br>
+Therefore, members agree that:
+<br>1. Any information about other members will NOT be used for soliciting or spamming.
+<br>2. Any information about other members will NOT be sold or given to non-members.
+<br>3. Web master(s) will NOT be held responsible for errors, but will adhere to 1 and 2.
+</table>
+<TR>
+<TD>
+<font face="Arial" size="2">
+<INPUT TYPE="RADIO" NAME="AGREE" VALUE="Agree" onkeypress="return noenter(event)">  I Agree</font> 
+</TD>
+<TD>
+<font face="Arial" size="2">
+<INPUT TYPE="RADIO" NAME="AGREE" VALUE="Do Not Agree" checked onkeypress="return noenter(event)">  Do NOT Agree</font>
+</TD>
+</TR>
+</table>
+<br><br>
+<table>
+   <tr>
+    <td colspan="2"><input type="button" VALUE="Submit Information" onkeypress="return submitform()" onclick="return submitform()"></td>
+    <td colspan="2"><input type="button" VALUE="Cancel" onclick="return history.go(-1)"></td>
+   </tr>
+</table>
+ </form>
+</body>
+</html>
